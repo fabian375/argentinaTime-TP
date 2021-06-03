@@ -1,4 +1,4 @@
-git initimport { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../api.service';
 
@@ -8,14 +8,15 @@ import { ApiService } from '../api.service';
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
-  data: any[] = [];
+  data:Array<any>;
+
 
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.apiService.getNews().subscribe(news => {
-      this.data = news;
+      this.data = news['articles'];
     });
 
   }
